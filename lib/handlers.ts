@@ -4,13 +4,13 @@ import { requestHandler } from './api';
 
 export const requestError = async (error: Error, _: any, response: Response, next: NextFunction): Promise<void> => {
   if (!error) {
-    return;
+    next();
   }
 
   const listenerKey = global.__DSN_STRING__;
-  console.log(listenerKey);
+
   if (!listenerKey || listenerKey === '') {
-    return;
+    next();
   }
 
   const { name, message } = error;

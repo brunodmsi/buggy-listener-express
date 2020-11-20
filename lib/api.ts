@@ -3,11 +3,11 @@ import axios from 'axios';
 import { IApiOptions } from './types';
 
 export const requestHandler = async ({ method, data, path }: IApiOptions) => {
-  const baseUrl = 'http://localhost:8080/listeners';
+  const url = `http://localhost:8080/listeners${path ? '/' + path : ''}`;
 
   await axios({
     method,
-    url: `${baseUrl}${path ? '/' + path : ''}`,
+    url,
     data,
   })
 }
