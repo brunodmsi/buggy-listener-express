@@ -1,21 +1,22 @@
+import * as http from 'http';
+
 import { parseStack } from './parsers';
 import { requestHandler } from './api';
 import { MiddlewareError } from './types';
 
 export function requestError(options?: {
   notInstanceOf?: any,
-  statusCode?: number;
 }): (
   error: MiddlewareError,
-  _: any,
-  response: Response,
+  req: http.IncomingMessage,
+  res: http.ServerResponse,
   next: (error: MiddlewareError) => void,
 ) => void {
   return function buggyErrorMiddleware(
     error: MiddlewareError,
-    _: any,
-    __: any,
-    next: (error: MiddlewareError) => void
+    _req: http.IncomingMessage,
+    res: http.ServerResponse,
+    next: (error: MiddlewareError) => void,
   ): void {
     if (!error) {
       next(error);
