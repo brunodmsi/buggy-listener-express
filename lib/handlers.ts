@@ -29,4 +29,6 @@ export const requestError = async (error: Error, _: any, response: Response, nex
       type: 'backend'
     }
   })
+
+  next();
 }
