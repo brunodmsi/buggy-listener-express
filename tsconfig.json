@@ -6,8 +6,11 @@
     "rootDirs": ["lib", "test"],
     "strict": true,
     "strictPropertyInitialization": false,
-    "baseUrl": ".",
+    "declaration": true,
+    "baseUrl": "./lib",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "include": ["lib"],
+  "exclude": ["node_modules"]
 }

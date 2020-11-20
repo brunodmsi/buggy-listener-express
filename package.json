@@ -1,7 +1,8 @@
 {
   "name": "buggy-listener-express",
-  "version": "1.0.0-beta2",
-  "main": "lib/index.js",
+  "version": "1.0.0-beta5",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "description": "Biblioteca para rodar no seu projeto express com integração ao Buggy",
   "license": "MIT",
   "author": {
@@ -9,6 +10,7 @@
     "name": "Bruno De Masi",
     "url": "https://demasi.dev"
   },
+  "files": ["lib/**/*"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/brunodmsi/buggy-listener-express"
