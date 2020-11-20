@@ -20,3 +20,10 @@ export interface IApiOptions {
   data?: any;
   method: 'GET' | 'POST' | 'PUT' | 'DELETE'
 }
+
+export interface MiddlewareError extends Error {
+  status?: number | string;
+  statusCode?: number | string;
+  status_code?: number | string;
+  query?: string;
+}
