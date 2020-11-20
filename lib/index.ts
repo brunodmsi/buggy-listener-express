@@ -1,2 +1,4 @@
-export { requestError } from './handlers';
-export { init } from './loader';
+import { requestError } from './handlers';
+import { init } from './loader';
+
+export { init, requestError };

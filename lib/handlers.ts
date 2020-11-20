@@ -8,7 +8,7 @@ export const requestError = async (error: Error, _: any, response: Response, nex
   }
 
   const listenerKey = global.__DSN_STRING__;
-
+  console.log(listenerKey);
   if (!listenerKey || listenerKey === '') {
     return;
   }
@@ -16,7 +16,6 @@ export const requestError = async (error: Error, _: any, response: Response, nex
   const { name, message } = error;
 
   const { line, where } = parseStack(error);
-
 
   await requestHandler({
     method: 'POST',
