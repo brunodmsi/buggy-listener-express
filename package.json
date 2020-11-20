@@ -1,8 +1,8 @@
 {
   "name": "buggy-listener-express",
-  "version": "1.0.0-beta5",
+  "version": "1.0.0-beta7",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist",
   "description": "Biblioteca para rodar no seu projeto express com integração ao Buggy",
   "license": "MIT",
   "author": {
