@@ -27,7 +27,7 @@ export function requestError(options?: {
         error.status !== 500 ||
         error.statusCode !== 500 ||
         error.status_code !== 500
-      )
+      ) || error instanceof Error
     ) {
       next(error);
       return;
