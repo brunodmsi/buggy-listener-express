@@ -1,4 +1,5 @@
-import { IParseStackString } from './types';
+import { Request } from 'express';
+import { IParseStackString, IParseRequestJson } from './types';
 
 export const parseStack = ({ message, stack }: Error): IParseStackString => {
   const messageLines = (message.match(/\n/g) || []).length + 1;
@@ -13,11 +14,25 @@ export const parseStack = ({ message, stack }: Error): IParseStackString => {
 }
 
 export const parseStackString = (stackString: string): IParseStackString => {
-  const where = stackString.match(/[/.]\w+/g)?.join('') as string;
-  const line = stackString.split(':')[1];
+  const stack_where = stackString.match(/[/.]\w+/g)?.join('') as string;
+  const stack_line = stackString.split(':')[1];
 
   return {
-    where,
-    line,
+    stack_where,
+    stack_line,
   }
 }
+
+export const parseRequest = (request: Request): IParseRequestJson => {
+  const { body, method, params, hostname, path, headers, query } = request;
+
+  return {
+    request_body: JSON.stringify(body),
+    request_method: method,
+    request_url: hostname,
+    request_url_path: path,
+    request_headers: JSON.stringify(headers),
+    request_query: JSON.stringify(query),
+    request_params: JSON.stringify(params),
+  }
+};

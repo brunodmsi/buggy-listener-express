@@ -1,7 +1,8 @@
+import { Request } from 'express';
 import * as http from 'http';
 
-import { parseStack } from './parsers';
-import { requestHandler } from './api';
+import { prepareAndSendData } from './client';
+import { parseStack, parseRequest } from './parsers';
 import { MiddlewareError } from './types';
 
 export function requestError(options?: {
@@ -27,36 +28,18 @@ export function requestError(options?: {
         error.status !== 500 ||
         error.statusCode !== 500 ||
         error.status_code !== 500
-      ) || error instanceof Error
+      ) || error.name === 'Error'
     ) {
       next(error);
       return;
     }
 
-    const listenerKey = global.__DSN_STRING__;
-
-    if (!listenerKey || listenerKey === '') {
+    if (!global.__DSN_STRING__ || global.__DSN_STRING__ === '') {
       next(error);
       return;
     }
 
-    const { name, message, query } = error;
-
-    const { line, where } = parseStack(error);
-
-    requestHandler({
-      method: 'POST',
-      path: 'express',
-      data: {
-        name,
-        message,
-        stack_where: where,
-        stack_line: line,
-        listener_key: listenerKey,
-        query,
-        type: 'backend'
-      }
-    }).then(() => {});
+    prepareAndSendData(error, _req as Request);
 
     next(error);
   }

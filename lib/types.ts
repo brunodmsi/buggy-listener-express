@@ -11,9 +11,20 @@ export interface ILoaderInitConfig {
 }
 
 export interface IParseStackString {
-  where: string;
-  line: string;
+  stack_where: string;
+  stack_line: string;
 }
+
+export interface IParseRequestJson {
+  request_body: string | undefined;
+  request_method: string;
+  request_url: string;
+  request_url_path: string;
+  request_headers: string;
+  request_query: string;
+  request_params: string;
+}
+
 
 export interface IApiOptions {
   path: string;
