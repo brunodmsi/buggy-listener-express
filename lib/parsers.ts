@@ -24,11 +24,14 @@ export const parseStackString = (stackString: string): IParseStackString => {
 }
 
 export const parseRequest = (request: Request): IParseRequestJson => {
-  const { body, method, params, hostname, path, headers, query } = request;
+  const { body, method, params,  path, headers, query, protocol } = request;
+
+  const hostname = request.get('host') as string;
 
   return {
     request_body: JSON.stringify(body) || null,
     request_method: method,
+    request_url_protocol: protocol,
     request_url: hostname,
     request_url_path: path,
     request_headers: JSON.stringify(headers),

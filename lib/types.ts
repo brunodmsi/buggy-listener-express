@@ -18,6 +18,7 @@ export interface IParseStackString {
 export interface IParseRequestJson {
   request_body: string | null;
   request_method: string;
+  request_url_protocol: string;
   request_url: string;
   request_url_path: string;
   request_headers: string;
