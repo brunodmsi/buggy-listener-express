@@ -27,7 +27,7 @@ export const parseRequest = (request: Request): IParseRequestJson => {
   const { body, method, params, hostname, path, headers, query } = request;
 
   return {
-    request_body: JSON.stringify(body),
+    request_body: JSON.stringify(body) || null,
     request_method: method,
     request_url: hostname,
     request_url_path: path,
