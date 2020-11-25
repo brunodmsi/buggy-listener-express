@@ -16,7 +16,7 @@ export interface IParseStackString {
 }
 
 export interface IParseRequestJson {
-  request_body: string | undefined;
+  request_body: string | null;
   request_method: string;
   request_url: string;
   request_url_path: string;

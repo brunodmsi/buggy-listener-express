@@ -15,7 +15,7 @@ export const prepareAndSendData = (error: MiddlewareError, request: Request) => 
     data: {
       name,
       message,
-      error_query: query,
+      error_query: query || null,
       ..._stackParsed,
       ..._requestParsed,
       listener_key: global.__DSN_STRING__,
