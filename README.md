@@ -38,3 +38,5 @@ app.listen(8080);
  * [ ] Permitir integração com demais ferramentas de gerência, como Trello, Asana, etc.
  * [ ] Lançar outros módulos para detecção de erros em mais ambientes (ex: React)
  
+ ## Licença
+ [MIT](https://github.com/brunodmsi/buggy-listener-express/blob/main/LICENSE)
