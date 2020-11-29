@@ -4,7 +4,7 @@ import { IApiOptions } from './types';
 
 export const requestHandler = async ({ method, data, path }: IApiOptions) => {
   try {
-    const url = `https://buggy.demasi.dev/listeners${path ? '/' + path : ''}`;
+    const url = `https://buggy.demasi.dev/api/listeners${path ? '/' + path : ''}`;
 
     await axios({
       method,
