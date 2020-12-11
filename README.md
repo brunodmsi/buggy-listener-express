@@ -18,12 +18,12 @@ import routes from './routes';
 
 const app = express();
 
-app.use(buggyListener.init(
+buggyListener.init(
   // OPCIONAL (você pode inserir a chave DSN por variável ambiente)
   {
     dsn: 'CHAVE-DSN'
   }
-));
+);
 
 app.use('/', routes);
 app.use(buggyListener.requestError());
